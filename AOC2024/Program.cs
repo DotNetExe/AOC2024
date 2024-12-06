@@ -11,9 +11,9 @@ class Program
     static void Main(string[] args)
     {
         //RunDay01();
-        //RunDay02();
+        RunDay02();
         // RunDay03();
-        RunDay06();
+        //RunDay06();
     }
 
     private static void RunDay01()
@@ -29,7 +29,7 @@ class Program
 
     private static void RunDay02()
     {
-        const bool isExample = true;
+        const bool isExample = false;
         var path = GetFilePath("Day02", isExample);
         
         var inputData = Reports.ReadInTestData(path);
