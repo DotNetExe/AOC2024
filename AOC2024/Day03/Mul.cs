@@ -4,7 +4,7 @@ namespace AOC2024.Day03;
 
 public class Mul
 {
-    private static Regex MUL_DETECT = new Regex(@"mul\((\d+),(\d+)\)");
+    private static readonly Regex MulDetect = new Regex(@"mul\((\d+),(\d+)\)", RegexOptions.Compiled);
     public static string GetTestData(string path)
     {
         var result = File.ReadAllText(path);
@@ -13,7 +13,7 @@ public class Mul
 
     public static void DoMul(string input)
     {
-        var matches = MUL_DETECT.Matches(input);
+        var matches = MulDetect.Matches(input);
         var sum = 0;
         foreach (Match match in matches)
         {
@@ -43,6 +43,6 @@ public class Mul
                 results.Add(section);
         }
 
-        Mul.DoMul(string.Join("", results));
+        DoMul(string.Join("", results));
     }
 }
