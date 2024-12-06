@@ -2,6 +2,7 @@
 using AOC2024.Day01;
 using AOC2024.Day02;
 using AOC2024.Day03;
+using AOC2024.Day06;
 
 namespace AOC2024;
 
@@ -11,7 +12,8 @@ class Program
     {
         //RunDay01();
         //RunDay02();
-        RunDay03();
+        // RunDay03();
+        RunDay06();
     }
 
     private static void RunDay01()
@@ -44,6 +46,16 @@ class Program
         Mul.DoMulWithDoAndDont(Mul.GetTestData(path));
     }
 
+    private static void RunDay06()
+    {
+        const bool isExample = false;
+
+        var path = GetFilePath("Day06", isExample);
+        
+        var room = GuardGallivant.GetRoom(path, out var guardStartCoordinate);
+        GuardGallivant.WalkRoom(room, guardStartCoordinate);
+    }
+
     private static string GetRuntimeDir()
     {
         var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -56,6 +68,6 @@ class Program
     private static string GetFilePath(string day, bool isExample)
     {
         var directory = GetRuntimeDir();
-        return Path.Combine(directory, "Day03", "Datasets", isExample ? "example.txt" :  $"{day.ToLower()}_data.txt");
+        return Path.Combine(directory, day, "Datasets", isExample ? "example.txt" :  $"{day.ToLower()}_data.txt");
     }
 }
