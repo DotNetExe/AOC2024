@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using AOC2024.Day01;
 using AOC2024.Day02;
+using AOC2024.Day03;
 
 namespace AOC2024;
 
@@ -9,15 +10,14 @@ class Program
     static void Main(string[] args)
     {
         //RunDay01();
-        RunDay02();
+        //RunDay02();
+        RunDay03();
     }
 
     private static void RunDay01()
     {
-        var directory = GetRuntimeDir();
-
         const bool isExample = false;
-        var path = Path.Combine(directory, "Day01", "Datasets", isExample ? "example.txt" :  "day01_data.txt");
+        var path = GetFilePath("Day01", isExample);
         
         var inputData = TotalDistance.ReadInTestData(path);
         
@@ -27,13 +27,21 @@ class Program
 
     private static void RunDay02()
     {
-        var directory = GetRuntimeDir();
-
         const bool isExample = true;
-        var path = Path.Combine(directory, "Day02", "Datasets", isExample ? "example.txt" :  "day02_data.txt");
+        var path = GetFilePath("Day02", isExample);
         
         var inputData = Reports.ReadInTestData(path);
         Reports.CheckForSafeness(inputData);
+    }
+
+    private static void RunDay03()
+    {
+        const bool isExample = false;
+
+        var path = GetFilePath("Day03", isExample);
+        
+        Mul.DoMul(Mul.GetTestData(path));
+        Mul.DoMulWithDoAndDont(Mul.GetTestData(path));
     }
 
     private static string GetRuntimeDir()
@@ -43,5 +51,11 @@ class Program
             throw new IOException("Directory could not be found");
         
         return directory;
+    }
+
+    private static string GetFilePath(string day, bool isExample)
+    {
+        var directory = GetRuntimeDir();
+        return Path.Combine(directory, "Day03", "Datasets", isExample ? "example.txt" :  $"{day.ToLower()}_data.txt");
     }
 }
