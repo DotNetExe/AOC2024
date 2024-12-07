@@ -3,6 +3,7 @@ using AOC2024.Day01;
 using AOC2024.Day02;
 using AOC2024.Day03;
 using AOC2024.Day06;
+using AOC2024.Day07;
 
 namespace AOC2024;
 
@@ -11,9 +12,10 @@ class Program
     static void Main(string[] args)
     {
         //RunDay01();
-        RunDay02();
+        // RunDay02();
         // RunDay03();
         //RunDay06();
+        RunDay07();
     }
 
     private static void RunDay01()
@@ -54,6 +56,14 @@ class Program
         
         var room = GuardGallivant.GetRoom(path, out var guardStartCoordinate);
         GuardGallivant.WalkRoom(room, guardStartCoordinate);
+    }
+
+    private static void RunDay07()
+    {
+        const bool isExample = false;
+
+        var path = GetFilePath("Day07", isExample);
+        BridgeRepair.DoCombinations(BridgeRepair.GetInput(path));
     }
 
     private static string GetRuntimeDir()
